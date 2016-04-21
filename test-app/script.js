@@ -9,7 +9,7 @@ var d = {
 function sendToServer(x, y, r) {
   console.log("send command ", x, y, r);
   $.post(
-    "http://127.0.0.1:1337/x" + x + "y" + y + "r" + r
+    "http://172.26.201.2:1337/x" + x + "y" + y + "r" + r
   );
 }
 
@@ -19,19 +19,19 @@ window.addEventListener("keydown", function (e) {
   switch (e.keyCode) {
     case 38:
       // up
-      update(0, MOV_SPEED, 0);
+      update(MOV_SPEED, 0, 0);
       break;
     case 40:
       // down
-      update(0, -MOV_SPEED, 0);
+      update(-MOV_SPEED, 0, 0);
       break;
     case 37:
       // left
-      update(-MOV_SPEED, 0, 0);
+      update(0, MOV_SPEED, 0);
       break;
     case 39:
       // right
-      update(MOV_SPEED, 0, 0);
+      update(0, -MOV_SPEED, 0);
       break;
     case 32:
       // space = stop
@@ -59,16 +59,16 @@ function update(x, y, r) {
 }
 
 $("#left").click(function() {
-  update(-MOV_SPEED, 0, 0);
-});
-$("#up").click(function() {
   update(0, MOV_SPEED, 0);
 });
+$("#up").click(function() {
+  update(MOV_SPEED, 0);
+});
 $("#right").click(function() {
-  update(MOV_SPEED, 0, 0);
+  update(0, -MOV_SPEED, 0);
 });
 $("#down").click(function() {
-  update(0, -MOV_SPEED, 0);
+  update(-MOV_SPEED, 0, 0);
 });
 $("#cl").click(function() {
   update(0, 0, -ROT_SPEED);

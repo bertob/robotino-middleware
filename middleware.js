@@ -16,7 +16,9 @@ http.createServer(function(request, response) {
   var cmd = request.url.split("/")[1];
   console.log(cmd);
   sendToRobot(new Buffer(cmd));
-  // updateSpeeds(x, y, r);
+
+  response.setHeader('Access-Control-Allow-Origin', '172.26.201.2:1337');
+  response.setHeader('Access-Control-Allow-Credentials', true);
   response.end();
 }).listen(1337);
 
